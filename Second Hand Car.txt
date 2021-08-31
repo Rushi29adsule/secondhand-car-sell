@@ -1,0 +1,73 @@
+Copyright (c) 2016, 2021, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect root@localhost:33060/secondhandcar
+Creating a session to 'root@localhost:33060/secondhandcar'
+Please provide the password for 'root@localhost:33060': ********
+Save password for 'root@localhost:33060'? [Y]es/[N]o/Ne[v]er (default No):
+Fetching schema names for autocompletion... Press ^C to stop.
+Fetching table and column names from `secondhandcar` for auto-completion... Press ^C to stop.
+Your MySQL connection id is 9 (X protocol)
+Server version: 8.0.26 MySQL Community Server - GPL
+Default schema set to `secondhandcar`.
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| secondhandcar      |
+| seriesdb           |
+| sys                |
++--------------------+
+6 rows in set (0.0017 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > show tables;
+Empty set (0.0020 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table customer(id INT NOT NULL AUTO_INCREMENT,name VARCHAR(256) NOT NULL,email VARCHAR(256) NOT NULL,phone INT NOT NULL,location INT NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (2.4121 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table location(id INT NOT NULL AUTO_INCREMENT,name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (1.7449 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > describe customer;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(256) | NO   |     | NULL    |                |
+| email    | varchar(256) | NO   |     | NULL    |                |
+| phone    | int          | NO   |     | NULL    |                |
+| location | int          | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.1439 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table type (id INT NOT NULL AUTO_INCREMENT,name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (0.5885 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table transmission (id INT NOT NULL AUTO_INCREMENT,name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (1.0595 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table brand (id INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(256),PRIMARY KEY(id));
+Query OK, 0 rows affected (0.7064 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table fuel (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(256) NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (1.6153 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > create table ad(id INT NOT NULL AUTO_INCREMENT,title VARCHAR(256) NOT NULL,description TEXT NOT NULL, driven INT NOT NULL,price VARCHAR(256) NOT NULL,location INT NOT NULL,customer INT NOT NULL,PRIMARY KEY(id));
+Query OK, 0 rows affected (0.7109 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > SHOW TABLES;
++-------------------------+
+| Tables_in_secondhandcar |
++-------------------------+
+| ad                      |
+| brand                   |
+| customer                |
+| fuel                    |
+| location                |
+| transmission            |
+| type                    |
++-------------------------+
+7 rows in set (0.0913 sec)
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL > alter table ad add column picture VARCHAR(256);
+Query OK, 0 rows affected (1.2127 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  secondhandcar  SQL >
